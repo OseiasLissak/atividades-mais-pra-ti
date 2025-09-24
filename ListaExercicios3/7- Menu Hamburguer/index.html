@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Hamburger Responsivo</title>
+    <style>
+        /* Estilos gerais para o corpo e navegação */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative; 
+        }
+
+        /* Navegação padrão */
+        .main-nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 1rem;
+            width: 100%; 
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+
+        /* Hambúrguer (oculto) */
+        .hamburger-menu {
+            display: none; 
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            z-index: 1100; 
+        }
+
+        .hamburger-menu .bar {
+            width: 100%;
+            height: 3px;
+            background-color: #333; 
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Conteúdo principal para demonstrar o scroll */
+        .content {
+            padding: 20px;
+            min-height: 800px;
+            background-color: #eef;
+            text-align: center;
+        }
+
+        /* Media query <= 600px */
+        @media screen and (max-width: 600px) {
+            header {
+                justify-content: flex-end; 
+                padding: 1rem 20px;   
+            }
+            
+
+            .main-nav {
+                display: none; 
+                flex-direction: column;
+                width: 100%;
+                background-color: #f4f4f4;
+                position: absolute;
+                top: 65px; 
+                left: 0;
+                z-index: 1000;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .main-nav.active {
+                display: flex; 
+            }
+
+            .main-nav a {
+                padding: 1rem;
+                border-bottom: 1px solid #ddd;
+                text-align: center;
+                color: #333;
+            }
+
+            .main-nav a:last-child {
+                border-bottom: none; 
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            /* Animação*/
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="main-nav">
+            <a href="#home">Home</a>
+            <a href="#about">Sobre</a>
+            <a href="#services">Serviços</a>
+            <a href="#contact">Contato</a>
+        </nav>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <div class="content">
+        <h1>Lorem ipsum dolor sit amet.</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, aliquid?</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, aliquid?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const mainNav = document.querySelector('.main-nav');
+
+            hamburgerMenu.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+            });
+
+            // Fecha o menu ao clicar em um link
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Tela é <= 600px antes de fechar o menu
+                    if (window.innerWidth <= 600) {
+                        mainNav.classList.remove('active');
+                        hamburgerMenu.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

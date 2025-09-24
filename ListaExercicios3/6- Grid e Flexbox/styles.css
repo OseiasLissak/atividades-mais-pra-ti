@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Container Flexbox  */
+.container-galeria {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    min-height: 100vh;  
+    padding: 20px;
+    box-sizing: border-box; 
+}
+
+/* Grid imagens */
+.galeria-imagens {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; 
+    max-width: 1200px; 
+    width: 100%; 
+}
+
+.item-galeria {
+    background-color: #e2dddd;
+    border: 1px solid #ddd;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 10px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.item-galeria img {
+    width: 300px;   
+    height: 300px;  
+    object-fit: cover; 
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 8px 8px 0 0; 
+}
+
+.item-galeria figcaption {
+    font-size: 0.9em;
+    color: #555;
+    padding: 0 10px; 
+}
+
+.item-galeria p {
+    margin: 10px;
+}
+
+
+/* Media Query 900px */
+@media (max-width: 900px) {
+    .galeria-imagens {
+        grid-template-columns: 1fr 1fr; 
+        width: 90%;;
+    }
+
+    .container-galeria {
+        width: 100%;
+        margin: 0px auto;
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+        
+        
+    }
+
+    .item-galeria{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .item-galeria img {
+        width: 400px;   
+        height: 300px;  
+        object-fit: cover; 
+        display: block;
+        margin-bottom: 10px;
+        border-radius: 8px 8px 0 0; 
+    }
+
+    .item-galeria {
+        margin: 10px;
+    }
+
+    .container-galeria {
+        display: flex;
+        margin: 0 auto;
+    }
+
+}
+
+/* Media Query 600px */
+@media (max-width: 600px) {
+    .container-galeria {
+        display: flex;
+        justify-content: center;
+    }
+    .galeria-imagens {
+        grid-template-columns: 1fr; 
+    }
+    
+    .item-galeria  {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .item-galeria img {
+        width: 100%;   
+        height: 300px;  
+        object-fit: cover; 
+        margin-bottom: 10px;
+        border-radius: 8px 8px 0 0; 
+    }
+
+}
